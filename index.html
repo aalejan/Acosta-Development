@@ -521,53 +521,25 @@
           spaces</p>
       </div>
       <div id="gallery-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Before & After Photos -->
-        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
-          <div class="relative">
-            <img src="src/images/Before1.jpeg" alt="Before Renovation Project" class="w-full h-80 object-cover">
-            <div
-              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-              <div class="text-center text-white">
-                <p class="text-xl font-light tracking-wide mb-2">Before Renovation</p>
-                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
-              </div>
-            </div>
+        <!-- Before & After Fade 1 -->
+        <div class="before-after-fade bg-slate-900 rounded-xl overflow-hidden shadow-lg relative h-80">
+          <img src="src/images/Before1.jpeg" alt="Before Renovation" class="w-full h-full object-cover">
+          <img src="src/images/After1.jpeg" alt="After Renovation"
+            class="after-img w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
+          <div
+            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-primary z-10">
+            BEFORE → AFTER
           </div>
         </div>
-        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
-          <div class="relative">
-            <img src="src/images/After1.jpeg" alt="After Renovation Project" class="w-full h-80 object-cover">
-            <div
-              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-              <div class="text-center text-white">
-                <p class="text-xl font-light tracking-wide mb-2">After Renovation</p>
-                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
-          <div class="relative">
-            <img src="src/images/Before2.jpeg" alt="Before Remodel" class="w-full h-80 object-cover">
-            <div
-              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-              <div class="text-center text-white">
-                <p class="text-xl font-light tracking-wide mb-2">Before Remodel</p>
-                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
-          <div class="relative">
-            <img src="src/images/After2.jpeg" alt="After Remodel" class="w-full h-80 object-cover">
-            <div
-              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-              <div class="text-center text-white">
-                <p class="text-xl font-light tracking-wide mb-2">After Remodel</p>
-                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
-              </div>
-            </div>
+
+        <!-- Before & After Fade 2 -->
+        <div class="before-after-fade bg-slate-900 rounded-xl overflow-hidden shadow-lg relative h-80">
+          <img src="src/images/Before2.jpeg" alt="Before Remodel" class="w-full h-full object-cover">
+          <img src="src/images/After2.jpeg" alt="After Remodel"
+            class="after-img w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-1000">
+          <div
+            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-primary z-10">
+            BEFORE → AFTER
           </div>
         </div>
 
@@ -1109,6 +1081,23 @@
     });
 
     // Smooth scroll behavior is handled by CSS scroll-smooth class
+
+    // Before/After fade functionality
+    const fadeContainers = document.querySelectorAll('.before-after-fade');
+
+    fadeContainers.forEach(container => {
+      const afterImg = container.querySelector('.after-img');
+
+      setInterval(() => {
+        // Fade to after
+        afterImg.style.opacity = '1';
+
+        // Fade back to before after 2 seconds
+        setTimeout(() => {
+          afterImg.style.opacity = '0';
+        }, 3000);
+      }, 5000); // Complete cycle every 4 seconds
+    });
 
     // Contact form handling
     const contactForm = document.getElementById('contact-form');
