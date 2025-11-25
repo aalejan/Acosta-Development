@@ -1,13 +1,1138 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>acosta-development</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acosta Development LLC - Expert Remodeling & Construction in Massachusetts</title>
+  <meta name="description"
+    content="High-quality remodeling, renovation, and construction services in Massachusetts. Clean work, reliability, and craftsmanship you can trust.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f172a',
+            secondary: '#1e293b',
+            accent: '#0ea5e9',
+            'accent-light': '#38bdf8',
+            'accent-dark': '#0284c7',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+
+    .gallery-item {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(15, 23, 42, 0.95));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .gallery-item:hover::before {
+      opacity: 1;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.3);
+    }
+
+    .gallery-item img {
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900">
+  <!-- Navigation -->
+  <nav class="bg-white backdrop-blur-xl shadow-md fixed w-full top-0 z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-24">
+        <div class="flex items-center">
+          <img src="src/images/Logo.png" alt="Acosta Development Logo" class="h-16 w-16 rounded">
+        </div>
+        <div class="hidden md:flex space-x-10">
+          <a href="#home"
+            class="nav-link text-gray-700 hover:text-primary font-light text-sm tracking-widest uppercase">Home</a>
+          <a href="#about"
+            class="nav-link text-gray-700 hover:text-primary font-light text-sm tracking-widest uppercase">About</a>
+          <a href="#services"
+            class="nav-link text-gray-700 hover:text-primary font-light text-sm tracking-widest uppercase">Services</a>
+          <a href="#portfolio"
+            class="nav-link text-gray-700 hover:text-primary font-light text-sm tracking-widest uppercase">Portfolio</a>
+          <a href="#contact"
+            class="nav-link text-gray-700 hover:text-primary font-light text-sm tracking-widest uppercase">Contact</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-4 pt-2 pb-4 space-y-2">
+        <a href="#home"
+          class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md transition-colors text-sm tracking-wide">Home</a>
+        <a href="#about"
+          class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md transition-colors text-sm tracking-wide">About</a>
+        <a href="#services"
+          class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md transition-colors text-sm tracking-wide">Services</a>
+        <a href="#portfolio"
+          class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md transition-colors text-sm tracking-wide">Portfolio</a>
+        <a href="#contact"
+          class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md transition-colors text-sm tracking-wide">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Hero Image -->
+    <div class="absolute inset-0">
+      <img src="src/images/BathroomRemodel.jpeg" alt="Bathroom Remodel" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900/60 via-slate-900/40 to-slate-900/30"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 relative z-10 w-full">
+      <div class="max-w-3xl">
+        <div
+          class="inline-block px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full text-xs font-light tracking-[0.3em] mb-10 border border-white/20 text-white uppercase">
+          Quality Remodeling & Construction
+        </div>
+        <h2 class="text-7xl sm:text-8xl md:text-9xl font-semibold mb-10 leading-[0.9] text-white">
+          Building<br>What<br><span class="italic font-semibold">Matters</span>
+        </h2>
+        <p class="text-xl sm:text-2xl mb-12 text-gray-200 leading-relaxed font-light max-w-xl">
+          High-quality remodeling and construction services throughout Massachusetts — clean work, reliability, and
+          craftsmanship you can trust
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contact"
+            class="btn-primary text-white font-light tracking-widest uppercase py-5 px-12 rounded-lg text-sm shadow-2xl hover:shadow-accent/50 group transition-all">
+            <span class="flex items-center justify-center">
+              Schedule Consultation
+              <svg class="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                </path>
+              </svg>
+            </span>
+          </a>
+          <a href="tel:9788468058"
+            class="bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 text-white font-light tracking-widest uppercase py-5 px-12 rounded-lg text-sm transition-all">
+            (978) 846-8058
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-32 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-20 items-center">
+        <div>
+          <div
+            class="inline-block px-5 py-2 bg-sky-50 rounded-full text-xs font-light tracking-widest text-accent mb-8 border border-sky-100">
+            WHO WE ARE
+          </div>
+          <h2 class="text-7xl font-semibold text-primary mb-8 tracking-tight leading-[0.95]">
+            Clean Work.<br>Reliability.<br><span class="text-accent italic">Craftsmanship.</span></h2>
+          <div class="space-y-6 text-lg text-gray-600 leading-relaxed font-light">
+            <p>
+              Acosta Development delivers <span class="font-normal text-gray-900">high-quality remodeling, renovation,
+                and construction services</span> with a focus on clean work, reliability, and craftsmanship you can
+              trust.
+            </p>
+            <p>
+              We handle projects of all sizes — from window and door installs to full renovations and flips — always
+              aiming for results that add real value to your home.
+            </p>
+            <p class="font-normal text-primary text-xl">
+              Our work is straightforward, efficient, and built to last.
+            </p>
+          </div>
+          <div class="mt-10 p-8 bg-gradient-to-br from-sky-50 to-slate-50 rounded-2xl border border-sky-100">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <svg class="w-6 h-6 text-accent mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h3 class="font-normal text-base text-primary mb-2 tracking-wide">SERVICE AREA</h3>
+                <p class="text-gray-600 font-light">Serving Massachusetts, including Greater Boston, North Shore, and
+                  surrounding communities</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="bg-white border border-gray-200 p-10 rounded-2xl hover:shadow-xl transition-all">
+            <div class="text-6xl font-light mb-3 text-primary">100<span class="text-accent">+</span></div>
+            <div class="text-gray-600 font-light tracking-wide text-sm">PROJECTS COMPLETED</div>
+          </div>
+          <div
+            class="bg-gradient-to-br from-accent to-accent-light text-white p-10 rounded-2xl hover:shadow-xl transition-all">
+            <div class="text-6xl font-light mb-3">100<span class="text-white/70">%</span></div>
+            <div class="text-sky-50 font-light tracking-wide text-sm">CLIENT SATISFACTION</div>
+          </div>
+          <div class="bg-white border border-gray-200 p-10 rounded-2xl col-span-2 hover:shadow-xl transition-all">
+            <div class="flex items-center justify-center h-full">
+              <div class="text-center">
+                <div class="text-3xl font-semibold mb-2 text-primary tracking-wide">Uncompromising Quality</div>
+                <div class="text-gray-500 font-light text-sm tracking-wide">CLEAN WORK · RELIABILITY · CRAFTSMANSHIP
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-32 bg-gradient-to-br from-slate-900 via-primary to-slate-800 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-accent-light rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-20">
+        <div
+          class="inline-block px-5 py-2 bg-white/5 backdrop-blur-sm rounded-full text-xs font-light tracking-widest mb-8 border border-white/10">
+          CLIENT EXPERIENCES
+        </div>
+        <h2 class="text-7xl font-semibold mb-6 tracking-tight">What Our <span class="italic">Clients Say</span></h2>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light">Don't just take our word for it — hear from
+          homeowners who've trusted us with their projects</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="glassmorphism text-white p-8 rounded-3xl shadow-2xl hover:shadow-accent/20 transition-all">
+          <div class="flex mb-6">
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+          </div>
+          <p class="text-lg text-gray-200 mb-8 italic leading-relaxed">
+            "Acosta Development made the entire window replacement process easy and stress-free. They replaced all 13 of
+            our old windows quickly, kept everything clean, and the finished work looks amazing. Honest, reliable, and
+            solid craftsmanship — exactly the kind of contractor you want in your home."
+          </p>
+          <div class="flex items-center border-t border-white/20 pt-6">
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-accent to-accent-light rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+              S
+            </div>
+            <div>
+              <p class="font-bold text-white text-lg">Shelly H.</p>
+              <p class="text-sm text-gray-400">Window Replacement Project</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="glassmorphism text-white p-8 rounded-3xl shadow-2xl hover:shadow-accent/20 transition-all">
+          <div class="flex mb-6">
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
+            </svg>
+          </div>
+          <p class="text-lg text-gray-200 mb-8 italic leading-relaxed">
+            "Acosta Development did an amazing job on our full bathroom remodel. They were easy to work with, kept us
+            updated the whole time, and the finished bathroom came out beautiful. It feels great walking into a space
+            that finally looks the way we always wanted."
+          </p>
+          <div class="flex items-center border-t border-white/20 pt-6">
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-accent to-accent-light rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+              A
+            </div>
+            <div>
+              <p class="font-bold text-white text-lg">Alexandra T.</p>
+              <p class="text-sm text-gray-400">Full Bathroom Remodel</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-32 bg-gradient-to-b from-white to-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <div
+          class="inline-block px-5 py-2 bg-sky-50 rounded-full text-xs font-light tracking-widest text-accent mb-8 border border-sky-100">
+          OUR SERVICES
+        </div>
+        <h2 class="text-7xl font-semibold text-primary mb-6 tracking-tight">What We <span class="italic">Do</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">From minor updates to complete renovations, we
+          deliver exceptional results</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="group bg-white p-10 rounded-2xl hover:shadow-lg transition-all duration-300 border border-gray-200">
+          <div
+            class="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-accent/10 to-accent-light/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-primary mb-3 tracking-wide">Full Renovations</h3>
+          <p class="text-gray-600 leading-relaxed font-light">Complete home transformations that maximize value and
+            functionality</p>
+        </div>
+        <div class="group bg-white p-10 rounded-2xl hover:shadow-lg transition-all duration-300 border border-gray-200">
+          <div
+            class="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-accent/10 to-accent-light/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7H4V5zM16 8a1 1 0 011-1h2a1 1 0 011 1v11a1 1 0 01-1 1h-2a1 1 0 01-1-1V8z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-primary mb-3 tracking-wide">Kitchen & Bath</h3>
+          <p class="text-gray-600 leading-relaxed font-light">Kitchen, bathroom, and living space updates tailored to
+            your vision</p>
+        </div>
+        <div class="group bg-white p-10 rounded-2xl hover:shadow-lg transition-all duration-300 border border-gray-200">
+          <div
+            class="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-accent/10 to-accent-light/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-primary mb-3 tracking-wide">Windows & Doors</h3>
+          <p class="text-gray-600 leading-relaxed font-light">Professional installation for improved energy efficiency
+            and aesthetics</p>
+        </div>
+        <div class="group bg-white p-10 rounded-2xl hover:shadow-lg transition-all duration-300 border border-gray-200">
+          <div
+            class="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-accent/10 to-accent-light/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-primary mb-3 tracking-wide">Property Flips</h3>
+          <p class="text-gray-600 leading-relaxed font-light">Expert renovation services for investment properties</p>
+        </div>
+        <div class="group bg-white p-10 rounded-2xl hover:shadow-lg transition-all duration-300 border border-gray-200">
+          <div
+            class="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-accent/10 to-accent-light/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-primary mb-3 tracking-wide">Custom Construction</h3>
+          <p class="text-gray-600 leading-relaxed font-light">Tailored building solutions for unique project
+            requirements</p>
+        </div>
+        <div class="group bg-white p-10 rounded-2xl hover:shadow-lg transition-all duration-300 border border-gray-200">
+          <div
+            class="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-accent/10 to-accent-light/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-primary mb-3 tracking-wide">Repairs & Updates</h3>
+          <p class="text-gray-600 leading-relaxed font-light">Quality fixes and improvements for any area of your home
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <div
+          class="inline-block px-5 py-2 bg-sky-50 rounded-full text-xs font-light tracking-widest text-accent mb-8 border border-sky-100">
+          RECENT PROJECTS
+        </div>
+        <h2 class="text-7xl font-semibold text-primary mb-6 tracking-tight">Our <span class="italic">Portfolio</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">Explore our collection of meticulously crafted
+          spaces</p>
+      </div>
+      <div id="gallery-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Before & After Photos -->
+        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+          <div class="relative">
+            <img src="src/images/Before1.jpeg" alt="Before Renovation Project" class="w-full h-80 object-cover">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <div class="text-center text-white">
+                <p class="text-xl font-light tracking-wide mb-2">Before Renovation</p>
+                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+          <div class="relative">
+            <img src="src/images/After1.jpeg" alt="After Renovation Project" class="w-full h-80 object-cover">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <div class="text-center text-white">
+                <p class="text-xl font-light tracking-wide mb-2">After Renovation</p>
+                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+          <div class="relative">
+            <img src="src/images/Before2.jpeg" alt="Before Remodel" class="w-full h-80 object-cover">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <div class="text-center text-white">
+                <p class="text-xl font-light tracking-wide mb-2">Before Remodel</p>
+                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+          <div class="relative">
+            <img src="src/images/After2.jpeg" alt="After Remodel" class="w-full h-80 object-cover">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <div class="text-center text-white">
+                <p class="text-xl font-light tracking-wide mb-2">After Remodel</p>
+                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bathroom Remodel -->
+        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+          <div class="relative">
+            <img src="src/images/BathroomRemodel.jpeg" alt="Bathroom Remodel" class="w-full h-80 object-cover">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <div class="text-center text-white">
+                <p class="text-xl font-light tracking-wide mb-2">Bathroom Remodel</p>
+                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kitchen Remodel -->
+        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+          <div class="relative">
+            <img src="src/images/KitchenRemodel.jpeg" alt="Kitchen Remodel" class="w-full h-80 object-cover">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <div class="text-center text-white">
+                <p class="text-xl font-light tracking-wide mb-2">Modern Kitchen</p>
+                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+          <div class="relative">
+            <img src="src/images/KitchenRemodel2.jpeg" alt="Kitchen Remodel Complete" class="w-full h-80 object-cover">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <div class="text-center text-white">
+                <p class="text-xl font-light tracking-wide mb-2">Contemporary Kitchen</p>
+                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Living Room -->
+        <div class="gallery-item bg-slate-900 rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+          <div class="relative">
+            <img src="src/images/livingroom.png" alt="Living Room Remodel" class="w-full h-80 object-cover">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <div class="text-center text-white">
+                <p class="text-xl font-light tracking-wide mb-2">Living Room Remodel</p>
+                <div class="w-12 h-0.5 bg-accent mx-auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Section -->
+  <section class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <div
+          class="inline-block px-5 py-2 bg-sky-50 rounded-full text-xs font-light tracking-widest text-accent mb-8 border border-sky-100">
+          FOLLOW OUR WORK
+        </div>
+        <h2 class="text-7xl font-semibold text-primary mb-6 tracking-tight">See More on <span
+            class="italic">Instagram</span></h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light mb-8">Follow us for project updates, before &
+          afters, and construction insights</p>
+        <a href="https://www.instagram.com/timothyrailon_1996/" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 btn-primary text-white font-light tracking-wide py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+          Follow @timothyrailon_1996
+        </a>
+      </div>
+
+      <!-- Instagram Feed -->
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Instagram Post 1 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+          <blockquote class="instagram-media" data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/p/DMdaR7yOU1R/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+            <div style="padding:16px;"> <a
+                href="https://www.instagram.com/p/DMdaR7yOU1R/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                target="_blank">
+                <div style=" display: flex; flex-direction: row; align-items: center;">
+                  <div
+                    style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                  </div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                    </div>
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                    </div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px"
+                    viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+                          </path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg></div>
+                <div style="padding-top: 8px;">
+                  <div
+                    style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                    View this post on Instagram</div>
+                </div>
+                <div style="padding: 12.5% 0;"></div>
+                <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                  <div>
+                    <div
+                      style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+                    </div>
+                    <div
+                      style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+                    </div>
+                    <div
+                      style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+                    </div>
+                  </div>
+                  <div style="margin-left: 8px;">
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+                    </div>
+                    <div
+                      style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+                    </div>
+                  </div>
+                  <div style="margin-left: auto;">
+                    <div
+                      style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+                    </div>
+                    <div
+                      style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+                    </div>
+                    <div
+                      style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                  <div
+                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
+                  </div>
+                  <div
+                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
+                  </div>
+                </div>
+              </a>
+              <p
+                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                <a href="https://www.instagram.com/p/DMdaR7yOU1R/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                  target="_blank">A post shared by Omar Regalado (@iamomarregalado)</a>
+              </p>
+            </div>
+          </blockquote>
+        </div>
+
+        <!-- Instagram Post 2 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+          <blockquote class="instagram-media" data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/DI_frfjOZux/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+            <div style="padding:16px;"> <a
+                href="https://www.instagram.com/reel/DI_frfjOZux/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                target="_blank">
+                <div style=" display: flex; flex-direction: row; align-items: center;">
+                  <div
+                    style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                  </div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                    </div>
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                    </div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px"
+                    viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+                          </path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg></div>
+                <div style="padding-top: 8px;">
+                  <div
+                    style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                    View this post on Instagram</div>
+                </div>
+                <div style="padding: 12.5% 0;"></div>
+                <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                  <div>
+                    <div
+                      style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+                    </div>
+                    <div
+                      style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+                    </div>
+                    <div
+                      style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+                    </div>
+                  </div>
+                  <div style="margin-left: 8px;">
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+                    </div>
+                    <div
+                      style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+                    </div>
+                  </div>
+                  <div style="margin-left: auto;">
+                    <div
+                      style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+                    </div>
+                    <div
+                      style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+                    </div>
+                    <div
+                      style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                  <div
+                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
+                  </div>
+                  <div
+                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
+                  </div>
+                </div>
+              </a>
+              <p
+                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                <a href="https://www.instagram.com/reel/DI_frfjOZux/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                  target="_blank">A post shared by Omar Regalado (@iamomarregalado)</a>
+              </p>
+            </div>
+          </blockquote>
+        </div>
+
+        <!-- Instagram Post 3 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+          <blockquote class="instagram-media" data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/p/DCx39QSOB9d/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+            <div style="padding:16px;"> <a
+                href="https://www.instagram.com/p/DCx39QSOB9d/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                target="_blank">
+                <div style=" display: flex; flex-direction: row; align-items: center;">
+                  <div
+                    style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                  </div>
+                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                    </div>
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                    </div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0;"></div>
+                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px"
+                    viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+                          </path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg></div>
+                <div style="padding-top: 8px;">
+                  <div
+                    style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                    View this post on Instagram</div>
+                </div>
+                <div style="padding: 12.5% 0;"></div>
+                <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                  <div>
+                    <div
+                      style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+                    </div>
+                    <div
+                      style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+                    </div>
+                    <div
+                      style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+                    </div>
+                  </div>
+                  <div style="margin-left: 8px;">
+                    <div
+                      style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+                    </div>
+                    <div
+                      style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+                    </div>
+                  </div>
+                  <div style="margin-left: auto;">
+                    <div
+                      style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+                    </div>
+                    <div
+                      style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+                    </div>
+                    <div
+                      style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                  <div
+                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
+                  </div>
+                  <div
+                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
+                  </div>
+                </div>
+              </a>
+              <p
+                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                <a href="https://www.instagram.com/p/DCx39QSOB9d/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                  target="_blank">A post shared by Timothy Railon (@timothyrailon_1996)</a>
+              </p>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Embed Script -->
+  <script async src="//www.instagram.com/embed.js"></script>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-32 bg-gradient-to-b from-slate-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <div
+          class="inline-block px-5 py-2 bg-sky-50 rounded-full text-xs font-light tracking-widest text-accent mb-8 border border-sky-100">
+          START YOUR PROJECT
+        </div>
+        <h2 class="text-7xl font-semibold text-primary mb-6 tracking-tight">Let's Start Your <span
+            class="italic">Project</span></h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">Ready to transform your space? Contact us for a
+          consultation</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div class="bg-white p-12 rounded-2xl shadow-lg border border-gray-200">
+          <form id="contact-form" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-light text-gray-700 mb-2 tracking-wide">NAME</label>
+              <input type="text" id="name" name="name" required
+                class="w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-1 focus:ring-accent focus:border-accent transition-all font-light">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-light text-gray-700 mb-2 tracking-wide">EMAIL</label>
+              <input type="email" id="email" name="email" required
+                class="w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-1 focus:ring-accent focus:border-accent transition-all font-light">
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-light text-gray-700 mb-2 tracking-wide">PHONE</label>
+              <input type="tel" id="phone" name="phone" required
+                class="w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-1 focus:ring-accent focus:border-accent transition-all font-light">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-light text-gray-700 mb-2 tracking-wide">PROJECT
+                DETAILS</label>
+              <textarea id="message" name="message" rows="4" required
+                class="w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-1 focus:ring-accent focus:border-accent transition-all font-light"></textarea>
+            </div>
+            <button type="submit"
+              class="w-full btn-primary text-white font-light tracking-wide py-5 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <span>Submit Inquiry</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="space-y-6">
+          <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-200">
+            <h3 class="text-2xl font-semibold text-primary mb-8 tracking-wide">Contact Information</h3>
+            <div class="space-y-6">
+              <div class="flex items-start group">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <p class="font-semibold text-gray-900">Phone</p>
+                  <a href="tel:9788468058" class="text-accent hover:text-accent-light font-medium">(978) 846-8058</a>
+                </div>
+              </div>
+              <div class="flex items-start group">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <p class="font-semibold text-gray-900">Email</p>
+                  <a href="mailto:Timothyacosta1@gmail.com"
+                    class="text-accent hover:text-accent-light font-medium">Timothyacosta1@gmail.com</a>
+                </div>
+              </div>
+              <div class="flex items-start group">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <p class="font-semibold text-gray-900">Service Area</p>
+                  <p class="text-gray-600">Massachusetts: Greater Boston, North Shore & surrounding areas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-br from-primary to-slate-900 text-white p-10 rounded-2xl shadow-xl">
+            <h3 class="text-2xl font-semibold mb-4 tracking-wide">Get Your Free Quote</h3>
+            <p class="text-gray-300 mb-8 font-light">Call, email, or text us directly for a consultation and estimate
+            </p>
+            <div class="space-y-4">
+              <a href="tel:9788468058"
+                class="btn-primary block text-white font-light tracking-wide py-4 px-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-all">
+                <span class="flex items-center justify-center">
+                  📞 Call Now
+                </span>
+              </a>
+              <a href="sms:9788468058"
+                class="block bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-light tracking-wide py-4 px-6 rounded-lg text-center transition-all border border-white/20">
+                💬 Send a Text
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-br from-slate-900 via-primary to-slate-800 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="flex items-center justify-center space-x-4 mb-6">
+          <img src="src/images/Logo.png" alt="Acosta Development Logo" class="h-14 w-14 rounded">
+          <div>
+            <h3 class="text-4xl font-semibold tracking-wide">Acosta</h3>
+            <p class="text-xs text-gray-400 tracking-[0.3em] uppercase font-light">Development LLC</p>
+          </div>
+        </div>
+        <p class="text-gray-400 mb-6 text-base font-light tracking-wide">QUALITY CONSTRUCTION & REMODELING</p>
+
+        <!-- Social Links -->
+        <div class="flex justify-center gap-6 mb-8">
+          <a href="https://www.instagram.com/timothyrailon_1996/" target="_blank" rel="noopener noreferrer"
+            class="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="w-24 h-px bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-8"></div>
+        <p class="text-gray-500 text-sm font-light">&copy; 2025 Acosta Development LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Smooth scroll behavior is handled by CSS scroll-smooth class
+
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const phone = formData.get('phone');
+      const message = formData.get('message');
+
+      // Create mailto link with form data
+      const subject = encodeURIComponent('Project Inquiry from ' + name);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nProject Details:\n${message}`
+      );
+
+      window.location.href = `mailto:Timothyacosta1@gmail.com?subject=${subject}&body=${body}`;
+
+      // Show confirmation
+      alert('Thank you! Your default email client will open with your message. You can also call or text us at (978) 846-8058.');
+    });
+  </script>
+</body>
+
 </html>
